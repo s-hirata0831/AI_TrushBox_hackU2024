@@ -43,9 +43,285 @@
 
 #include "mcc_generated_files/mcc.h"
 
-/*
-                         Main application
- */
+void displayClear(){
+  A_SetHigh();
+  B_SetHigh();
+  C_SetHigh();
+  D_SetHigh();
+  E_SetHigh();
+  F_SetHigh();
+  G_SetHigh();
+}
+void displayZero(){
+  displayClear();
+  A_SetLow();
+  B_SetLow();
+  C_SetLow();
+  D_SetLow();
+  E_SetLow();
+  F_SetLow();
+}
+void displayOne(){
+  displayClear();
+  B_SetLow();
+  C_SetLow();
+}
+void displayTwo(){
+  displayClear();
+  A_SetLow();
+  B_SetLow();
+  G_SetLow();
+  E_SetLow();
+  D_SetLow();
+}
+void displayThree(){
+  displayClear();
+  A_SetLow();
+  B_SetLow();
+  G_SetLow();
+  C_SetLow();
+  D_SetLow();
+}
+void displayFour(){
+  displayClear();
+  F_SetLow();
+  G_SetLow();
+  B_SetLow();
+  C_SetLow();
+}
+void displayFive(){
+  displayClear();
+  A_SetLow();
+  F_SetLow();
+  G_SetLow();
+  C_SetLow();
+  D_SetLow();
+}
+void displaySix(){
+  displayClear();
+  A_SetLow();
+  F_SetLow();
+  G_SetLow();
+  C_SetLow();
+  D_SetLow();
+  E_SetLow();
+}
+void displaySeven(){
+  displayClear();
+  F_SetLow();
+  A_SetLow();
+  B_SetLow();
+  C_SetLow();
+}
+void displayEight(){
+  displayClear();
+  A_SetLow();
+  B_SetLow();
+  C_SetLow();
+  D_SetLow();
+  E_SetLow();
+  F_SetLow();
+  G_SetLow();
+}
+void displayNine(){
+  displayClear();
+  A_SetLow();
+  B_SetLow();
+  G_SetLow();
+  F_SetLow();
+  C_SetLow();
+}
+
+void displaySegments(int num){
+  displayClear();
+  switch (num)
+  {
+  case 0:
+    displayZero();
+    break;
+  case 1:
+    displayOne();
+    break;
+  case 2:
+    displayTwo();
+    break;
+  case 3:
+    displayThree();
+    break;
+  case 4:
+    displayFour();
+    break;
+  case 5:
+    displayFive();
+    break;
+  case 6:
+    displaySix();
+    break;
+  case 7:
+    displaySeven();
+    break;
+  case 8:
+    displayEight();
+    break;
+  case 9:
+    displayNine();
+    break;
+
+  default:
+    return;
+  }
+  DELAY_milliseconds(1);
+}
+
+void selectDIG(int dig){
+  displayClear();
+  DIG_1_SetHigh();
+  DIG_2_SetHigh();
+  DIG_3_SetHigh();
+  DIG_4_SetHigh();
+
+  switch (dig)
+  {
+    case 1:
+      DIG_1_SetLow();
+      break;
+    case 2:
+      DIG_2_SetLow();
+      break;
+    case 3:
+      DIG_3_SetLow();
+      break;
+    case 4:
+      DIG_4_SetLow();
+      break;
+
+    default:
+      break;
+  }
+}
+
+void displayRoll(int cnt){
+  displayClear();
+  switch(cnt){
+    case 1:
+      A_SetLow();
+      B_SetLow();
+      break;
+    case 2:
+      B_SetLow();
+      C_SetLow();
+      break;
+    case 3:
+      C_SetLow();
+      D_SetLow();
+      break;
+    case 4:
+      D_SetLow();
+      E_SetLow();
+      break;
+    case 5:
+      E_SetLow();
+      F_SetLow();
+      break;
+    case 6:
+      F_SetLow();
+      A_SetLow();
+      break;
+
+    default:
+      return;
+  }
+  DELAY_milliseconds(1);
+}
+
+void displayLotteryResult(int val){
+  int dig_1 = val / 1000;
+  int dig_2 = (val / 100) % 10;
+  int dig_3 = (val / 10) % 10;
+  int dig_4 = val % 10;
+  //全桁回転
+  for(int x=0; x<3; x++){ //回転回数
+    for(int i=1; i<7; i++){ //回転表示1周分
+      for(int wait_cnt=0; wait_cnt<10; wait_cnt++){
+        for(int j=1; j<5; j++){
+          selectDIG(j);
+          displayRoll(i);
+        }
+      }
+    }
+  }
+
+  //1桁目表示
+  for(int x=0; x<1; x++){ //回転回数
+    for(int i=1; i<7; i++){ //回転表示1周分
+      for(int wait_cnt=0; wait_cnt<10; wait_cnt++){
+        for(int j=1; j<5; j++){
+          selectDIG(j);
+          if(j == 1){
+            displaySegments(dig_1);
+          }else{
+            displayRoll(i);
+          }
+        }
+      }
+    }
+  }
+
+  //2桁目表示
+  for(int x=0; x<1; x++){ //回転回数
+    for(int i=1; i<7; i++){ //回転表示1周分
+      for(int wait_cnt=0; wait_cnt<10; wait_cnt++){
+        for(int j=1; j<5; j++){
+          selectDIG(j);
+          if(j == 1){
+            displaySegments(dig_1);
+          }else if(j == 2){
+            displaySegments(dig_2);
+          }else{
+            displayRoll(i);
+          }
+        }
+      }
+    }
+  }
+
+  //3桁目表示
+  for(int x=0; x<1; x++){ //回転回数
+    for(int i=1; i<7; i++){ //回転表示1周分
+      for(int wait_cnt=0; wait_cnt<10; wait_cnt++){
+        for(int j=1; j<5; j++){
+          selectDIG(j);
+          if(j == 1){
+            displaySegments(dig_1);
+          }else if(j == 2){
+            displaySegments(dig_2);
+          }else if(j == 3){
+            displaySegments(dig_3);
+          }else{
+            displayRoll(i);
+          }
+        }
+      }
+    }
+  }
+
+  //4桁目表示
+  for(int wait_cnt=0; wait_cnt<1000; wait_cnt++){
+    for(int j=1; j<5; j++){
+      selectDIG(j);
+      if(j == 1){
+        displaySegments(dig_1);
+      }else if(j == 2){
+        displaySegments(dig_2);
+      }else if(j == 3){
+        displaySegments(dig_3);
+      }else{
+        displaySegments(dig_4);
+      }
+    }
+  }
+}
+
 void main(void)
 {
     // initialize the device
@@ -68,9 +344,10 @@ void main(void)
 
     while (1)
     {
-        // Add your application code
+      displayLotteryResult(7776);
     }
 }
+
 /**
  End of File
 */
