@@ -11,7 +11,7 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+$C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
 reset_vec CODE 0 0 0 2 2
 end_init CODE 0 2 2 2 2
 config CONFIG 4 8007 8007 2 2
@@ -140,13 +140,13 @@ STRING 800-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\7segLed.X.production.o
-7FB cinit CODE >4581:C:\Users\81809\AppData\Local\Temp\xcAskuc.s
-7FB cinit CODE >4584:C:\Users\81809\AppData\Local\Temp\xcAskuc.s
-7FB cinit CODE >4596:C:\Users\81809\AppData\Local\Temp\xcAskuc.s
-7FC cinit CODE >4597:C:\Users\81809\AppData\Local\Temp\xcAskuc.s
-7FD cinit CODE >4603:C:\Users\81809\AppData\Local\Temp\xcAskuc.s
-7FD cinit CODE >4605:C:\Users\81809\AppData\Local\Temp\xcAskuc.s
-7FE cinit CODE >4606:C:\Users\81809\AppData\Local\Temp\xcAskuc.s
+7FB cinit CODE >4581:C:\Users\81809\AppData\Local\Temp\xcAsnsk.s
+7FB cinit CODE >4584:C:\Users\81809\AppData\Local\Temp\xcAsnsk.s
+7FB cinit CODE >4596:C:\Users\81809\AppData\Local\Temp\xcAsnsk.s
+7FC cinit CODE >4597:C:\Users\81809\AppData\Local\Temp\xcAsnsk.s
+7FD cinit CODE >4603:C:\Users\81809\AppData\Local\Temp\xcAsnsk.s
+7FD cinit CODE >4605:C:\Users\81809\AppData\Local\Temp\xcAsnsk.s
+7FE cinit CODE >4606:C:\Users\81809\AppData\Local\Temp\xcAsnsk.s
 20D text26 CODE >165:D:\GitHub\AI_TrushBox_hackU2024\7segLed.X\mcc_generated_files/eusart.c
 20D text26 CODE >166:D:\GitHub\AI_TrushBox_hackU2024\7segLed.X\mcc_generated_files/eusart.c
 212 text26 CODE >167:D:\GitHub\AI_TrushBox_hackU2024\7segLed.X\mcc_generated_files/eusart.c
@@ -614,10 +614,10 @@ _LATC 10E 0 ABS 0 - dist/default/production\7segLed.X.production.o
 _WPUA 20C 0 ABS 0 - dist/default/production\7segLed.X.production.o
 _WPUB 20D 0 ABS 0 - dist/default/production\7segLed.X.production.o
 _WPUC 20E 0 ABS 0 - dist/default/production\7segLed.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+___sp 0 0 STACK 2 stack C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
 _main 540 0 CODE 0 maintext dist/default/production\7segLed.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\7segLed.X.production.o
-start 4 0 CODE 0 init C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+start 4 0 CODE 0 init C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
 __size_of___awdiv 0 0 ABS 0 - dist/default/production\7segLed.X.production.o
 __size_of___awmod 0 0 ABS 0 - dist/default/production\7segLed.X.production.o
 __size_of_main 0 0 ABS 0 - dist/default/production\7segLed.X.production.o
@@ -643,12 +643,12 @@ __end_of_EUSART_Initialize 5C4 0 CODE 0 text23 dist/default/production\7segLed.X
 __Hpowerup 0 0 CODE 0 powerup -
 ___awmod@sign 21 0 BANK0 1 cstackBANK0 dist/default/production\7segLed.X.production.o
 __size_of_SYSTEM_Initialize 0 0 ABS 0 - dist/default/production\7segLed.X.production.o
-intlevel0 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAskuc.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAskuc.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAskuc.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAskuc.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAskuc.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
 wtemp0 7E 0 ABS 0 - dist/default/production\7segLed.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
 _RC1STAbits 19D 0 ABS 0 - dist/default/production\7segLed.X.production.o
@@ -674,8 +674,8 @@ __end_of___awmod 792 0 CODE 0 text17 dist/default/production\7segLed.X.productio
 _INLVLA 38C 0 ABS 0 - dist/default/production\7segLed.X.production.o
 _INLVLB 38D 0 ABS 0 - dist/default/production\7segLed.X.production.o
 _INLVLC 38E 0 ABS 0 - dist/default/production\7segLed.X.production.o
-___stackhi 23EF 0 ABS 0 - C:\Users\81809\AppData\Local\Temp\xcAskuc.o
-___stacklo 2038 0 ABS 0 - C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+___stackhi 23EF 0 ABS 0 - C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
+___stacklo 2038 0 ABS 0 - C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
 _EUSART_Initialize 580 0 CODE 0 text23 dist/default/production\7segLed.X.production.o
 DELAY_milliseconds@milliseconds 70 0 COMMON 1 cstackCOMMON dist/default/production\7segLed.X.production.o
 _PIN_MANAGER_Initialize 60E 0 CODE 0 text21 dist/default/production\7segLed.X.production.o
@@ -709,7 +709,7 @@ displayLotteryResult@wait_cnt_410 37 0 BANK0 1 cstackBANK0 dist/default/producti
 displayLotteryResult@wait_cnt_412 39 0 BANK0 1 cstackBANK0 dist/default/production\7segLed.X.production.o
 _WDTCON 97 0 ABS 0 - dist/default/production\7segLed.X.production.o
 displayLotteryResult@val 22 0 BANK0 1 cstackBANK0 dist/default/production\7segLed.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+___int_sp 0 0 STACK 2 stack C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
 __size_of_displaySegments 0 0 ABS 0 - dist/default/production\7segLed.X.production.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
@@ -856,7 +856,7 @@ __size_of_displaySeven 0 0 ABS 0 - dist/default/production\7segLed.X.production.
 __size_of_displayThree 0 0 ABS 0 - dist/default/production\7segLed.X.production.o
 __HnvBANK0 0 0 ABS 0 nvBANK0 -
 __Lintentry 4 0 CODE 0 intentry -
-reset_vec 0 0 CODE 0 reset_vec C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
 __LbssBANK0 0 0 ABS 0 bssBANK0 -
 _displayOne 43E 0 CODE 0 text9 dist/default/production\7segLed.X.production.o
 _displaySix 4E2 0 CODE 0 text7 dist/default/production\7segLed.X.production.o

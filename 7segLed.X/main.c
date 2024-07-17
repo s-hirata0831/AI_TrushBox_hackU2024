@@ -344,7 +344,7 @@ void main(void)
 
     while (1)
     {
-      displayLotteryResult(7776);
+      displayLotteryResult(7777);
     }
 }
 

@@ -14813,6 +14813,6 @@ void main(void)
 # 345 "main.c"
     while (1)
     {
-      displayLotteryResult(7776);
+      displayLotteryResult(7777);
     }
 }

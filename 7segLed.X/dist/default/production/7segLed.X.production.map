@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.32\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\7segLed.X.production.sym \
   --cmf=dist/default/production\7segLed.X.production.cmf -z -Q16F1769 \
-  -oC:\Users\81809\AppData\Local\Temp\xcAskuc.4 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\81809\AppData\Local\Temp\xcAsnsk.4 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/7segLed.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=02038h-023EFh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -31,7 +31,7 @@ Linker command line:
   -AIDLOC=08000h-08003h -DIDLOC=2 -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 \
   -DENTRY=2 -preset_vec=00h,intentry,init,end_init -ppowerup=CODE \
   -pcinit=CODE -pfunctab=ENTRY -k \
-  C:\Users\81809\AppData\Local\Temp\xcAskuc.o \
+  C:\Users\81809\AppData\Local\Temp\xcAsnsk.o \
   dist/default/production\7segLed.X.production.o 
 
 Object code version is 3.11
@@ -41,7 +41,7 @@ Machine type is 16F1769
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\81809\AppData\Local\Temp\xcAskuc.o
+C:\Users\81809\AppData\Local\Temp\xcAsnsk.o
                 end_init                              2        2        2        0       0
                 reset_vec                             0        0        2        0       0
                 config                             8007     8007        2        0       4
