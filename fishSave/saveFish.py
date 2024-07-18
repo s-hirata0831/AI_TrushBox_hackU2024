@@ -4,6 +4,13 @@ import flet as ft
 #画面出力
 #------
 def main(page: ft.Page):
+    #------
+    #画面サイズ変数
+    #------
+    WIDTH=1470
+    HEIGHT=956
+    BAR_HEIGHT=HEIGHT*0.08
+
     page.title = "魚を救え！"
     page.window_minimizable =False
     page.window_maximizable = True
@@ -14,6 +21,35 @@ def main(page: ft.Page):
     page.fonts={
         "font": "/Users/hiratasoma/Documents/AI_TrushBox_hackU2024/fishSave/DotGothic16-Regular.ttf"
     }
+    #AppBar(上部バナー)
+    page.appbar = ft.AppBar(
+        leading=ft.Container(ft.Image(src="logo.png", height=BAR_HEIGHT*0.8, fit=ft.ImageFit.CONTAIN), margin=ft.margin.only(left=10, top=0, right=0, bottom=0), padding=0),
+        toolbar_height=BAR_HEIGHT,
+        bgcolor=ft.colors.BLUE_100,
+        title=ft.Row([
+            ft.Text(
+                "魚を救え！",
+                font_family="font",
+                color=ft.colors.BLACK,
+                size=40,
+                weight=ft.FontWeight.W_900
+            ),
+            ft.Image(src="can.png", height=BAR_HEIGHT*0.6),
+            ft.Text(
+                "0本",
+                font_family="font",
+                color=ft.colors.BLACK,
+                size=35
+            ),
+            ft.Image(src="pet.png", height=BAR_HEIGHT*0.6),
+            ft.Text(
+                "0本",
+                font_family="font",
+                color=ft.colors.BLACK,
+                size=35
+            )
+        ])
+    )
     
 
     #------
@@ -28,6 +64,7 @@ def main(page: ft.Page):
             ft.View(
                 "/",
                 [
+                    page.appbar,
                     ft.Container(
                         ft.Text(
                             "魚を救え！",
