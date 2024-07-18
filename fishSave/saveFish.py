@@ -3,6 +3,7 @@ import firebase_admin
 from firebase_admin import firestore
 from firebase_admin import credentials
 import threading
+import writeCsv
 
 #------
 #Firebase初期設定
@@ -29,7 +30,7 @@ def main(page: ft.Page):
     page.window_minimizable = False
     page.window_maximizable = True
     page.window_resizable = True
-    page.window_full_screen = False
+    page.window_full_screen = True
     page.window_always_on_top = True
     # フォント
     page.fonts = {
@@ -39,6 +40,22 @@ def main(page: ft.Page):
     # 缶とペットボトルの本数を表示するテキスト
     can_text = ft.Text("0本", font_family="font", color=ft.colors.BLACK, size=35)
     pet_text = ft.Text("0本", font_family="font", color=ft.colors.BLACK, size=35)
+
+    #缶を表示する
+    canIm = ft.Image(
+        src="canIm.png",
+        height=HEIGHT*0.3,
+        width=WIDTH*0.1,
+        fit=ft.ImageFit.CONTAIN
+    )
+
+    #ペットボトルを表示する
+    petIm = ft.Image(
+        src="pet.png",
+        height=HEIGHT*0.3,
+        width=WIDTH*0.1,
+        fit=ft.ImageFit.CONTAIN
+    )
 
     # AppBar(上部バナー)
     page.appbar = ft.AppBar(
@@ -51,7 +68,7 @@ def main(page: ft.Page):
         bgcolor=ft.colors.BLUE_100,
         title=ft.Row([
             ft.Text(
-                "魚を救え！",
+                "魚を取り戻そう！",
                 font_family="font",
                 color=ft.colors.BLACK,
                 size=40,
@@ -76,17 +93,82 @@ def main(page: ft.Page):
                 [
                     page.appbar,
                     ft.Container(
-                        ft.Text(
-                            "魚を救え！",
-                            size=100,
-                            color=ft.colors.BLACK,
-                            font_family="font"
-                        )
+                        content=ft.Column([
+                            ft.Row([
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0),
+                            ft.Row([
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0),
+                            ft.Row([
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm,
+                                canIm,
+                                petIm
+                            ], alignment=ft.MainAxisAlignment.CENTER, spacing=0)
+                        ],alignment=ft.MainAxisAlignment.CENTER, spacing=0),
+                        width=WIDTH,
+                        height=HEIGHT - BAR_HEIGHT
                     )
                 ],
                 bgcolor=ft.colors.BLUE_300
             )
         )
+
+        if page.route == "/1":
+            page.views.append(
+                ft.View(
+                    "/",
+                    [
+                        page.appbar,
+                        ft.Container(
+                            content=ft.Column([
+                                ft.Row([
+                                    ft.Text(
+                                        "捨ててくれてありがとう！",
+                                        size=100,
+                                        font_family="font",
+                                        color=ft.colors.BLACK
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER),
+                                ft.Row([
+                                    ft.Image(
+                                        src="thanks.png",
+                                        height=HEIGHT*0.5
+                                    )
+                                ], alignment=ft.MainAxisAlignment.CENTER)
+                            ],alignment=ft.MainAxisAlignment.SPACE_EVENLY),
+                            width=WIDTH,
+                            height=HEIGHT*0.92
+                        )
+                    ],
+                    bgcolor=ft.colors.BLUE_300
+                )
+            )
 
         # ページ更新
         page.update()
@@ -106,6 +188,10 @@ def main(page: ft.Page):
         top_view = page.views[0]
         page.go(top_view.route)
 
+    #1個目
+    def open_1():
+        page.go("/1")
+
     # Firebaseからデータを取得して更新
     def update_data():
         can = docCan.get().to_dict()
@@ -117,10 +203,13 @@ def main(page: ft.Page):
         pet_text.value = f"{pet_num}本"
         print("データを取得*2")
 
+        if can_num == 1 or pet_num == 1:
+            open_1()
+
         # ページを更新
         page.update()
 
-    # 5秒ごとにデータを更新
+    # 6秒ごとにデータを更新
     def periodic_update():
         update_data()
         threading.Timer(6, periodic_update).start()
@@ -138,4 +227,5 @@ def main(page: ft.Page):
     periodic_update()
 
 # アプリの開始
+writeCsv.resetCsv()
 ft.app(target=main)
