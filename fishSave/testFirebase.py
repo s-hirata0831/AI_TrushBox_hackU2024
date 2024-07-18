@@ -6,7 +6,7 @@ from firebase_admin import credentials
 #------
 #Firebase初期設定
 #------
-cred = credentials.Certificate("fishSave/token.json")
+cred = credentials.Certificate("token.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 document = db.collection("stateTrashBox").document("can")
