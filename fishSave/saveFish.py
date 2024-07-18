@@ -1,4 +1,17 @@
 import flet as ft
+import firebase_admin
+from firebase_admin import firestore
+from firebase_admin import credentials
+
+#------
+#Firebase初期設定
+#------
+cred = credentials.Certificate("fishSave/token.json")
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+#FirebaseのドキュメントIDを指定
+docCan = db.collection("stateTrashBox").document("can")
+docPet = db.collection("stateTrashBox").document("pet")
 
 #------
 #画面出力
@@ -21,6 +34,15 @@ def main(page: ft.Page):
     page.fonts={
         "font": "/Users/hiratasoma/Documents/AI_TrushBox_hackU2024/fishSave/DotGothic16-Regular.ttf"
     }
+    #缶の本数を取得
+    canState = ['canNum']
+    can = docCan.get(field_paths=canState).to_dict()
+    can_s=can['canNum']
+    #ペットボトルの本数を取得
+    petState = ['petNum']
+    pet = docPet.get(field_paths=petState).to_dict()
+    pet_s=pet['petNum']
+
     #AppBar(上部バナー)
     page.appbar = ft.AppBar(
         leading=ft.Container(ft.Image(src="logo.png", height=BAR_HEIGHT*0.8, fit=ft.ImageFit.CONTAIN), margin=ft.margin.only(left=10, top=0, right=0, bottom=0), padding=0),
@@ -36,14 +58,14 @@ def main(page: ft.Page):
             ),
             ft.Image(src="can.png", height=BAR_HEIGHT*0.6),
             ft.Text(
-                "0本",
+                str(can_s)+"本",
                 font_family="font",
                 color=ft.colors.BLACK,
                 size=35
             ),
             ft.Image(src="pet.png", height=BAR_HEIGHT*0.6),
             ft.Text(
-                "0本",
+                str(pet_s)+"本",
                 font_family="font",
                 color=ft.colors.BLACK,
                 size=35
