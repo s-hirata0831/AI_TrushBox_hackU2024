@@ -10,6 +10,10 @@ def main(page: ft.Page):
     page.window_resizable = True
     page.window_full_screen = False
     page.window_always_on_top = True
+    #フォント
+    page.fonts={
+        "font": "/Users/hiratasoma/Documents/AI_TrushBox_hackU2024/fishSave/DotGothic16-Regular.ttf"
+    }
     
 
     #------
@@ -28,7 +32,8 @@ def main(page: ft.Page):
                         ft.Text(
                             "魚を救え！",
                             size=100,
-                            color=ft.colors.BLACK
+                            color=ft.colors.BLACK,
+                            font_family="font"
                         )
                     )
                 ],
