@@ -1,10 +1,11 @@
 import cv2
 from ultralytics import YOLO
+import time
 #from cam import getFrame
 #import torch
 
 # Load a model
-model = YOLO(r'jetson/best.pt')
+model = YOLO(r'best.pt')
 
 capture = cv2.VideoCapture(0)
 
@@ -40,6 +41,7 @@ if __name__ == "__main__":
     while True:
         label = getResultAI()
         print(label)
+        time.sleep(0.5)
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
 
