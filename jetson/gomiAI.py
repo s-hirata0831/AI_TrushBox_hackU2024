@@ -1,14 +1,21 @@
 import cv2
 from ultralytics import YOLO
-from cam import getFrame
+#from cam import getFrame
 #import torch
 
 # Load a model
 model = YOLO(r'jetson/best.pt')
 
+capture = cv2.VideoCapture(0)
+
+def getFrame():
+    ret = False
+    while ret == False:
+      ret, frame = capture.read()
+    return frame
+
 def getResultAI():
   img = getFrame();
-  cv2.imshow("123", img)
   result =  model.predict(source=img,
                 conf=0.50,
                 project="mypredict", # 出力先
@@ -29,4 +36,13 @@ def getResultAI():
 
   return result_label
 
-print(getResultAI())
+if __name__ == "__main__":
+    while True:
+        label = getResultAI()
+        print(label)
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            break
+
+    capture.release()
+    cv2.destroyAllWindows()
+#print(getResultAI())
