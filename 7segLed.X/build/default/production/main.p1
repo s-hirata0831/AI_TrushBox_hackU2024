@@ -39,6 +39,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 "71 ./mcc_generated_files/mcc.h
 [; ;./mcc_generated_files/mcc.h: 71: void SYSTEM_Initialize(void);
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
+"206 ./mcc_generated_files/eusart.h
+[; ;./mcc_generated_files/eusart.h: 206: _Bool EUSART_is_rx_ready(void);
+[v _EUSART_is_rx_ready `(a ~T0 @X0 0 ef ]
+"321
+[; ;./mcc_generated_files/eusart.h: 321: uint8_t EUSART_Read(void);
+[v _EUSART_Read `(uc ~T0 @X0 0 ef ]
+"341
+[; ;./mcc_generated_files/eusart.h: 341: void EUSART_Write(uint8_t txData);
+[v _EUSART_Write `(v ~T0 @X0 0 ef1`uc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1769.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1769.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -2764,15 +2773,27 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 346:     {
 {
 "347
-[; ;main.c: 347:       displayLotteryResult(7777);
-[e ( _displayLotteryResult (1 -> 7777 `i ]
+[; ;main.c: 347:       if(EUSART_is_rx_ready()){
+[e $ ! != -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 1650  ]
+{
 "348
-[; ;main.c: 348:     }
+[; ;main.c: 348:         uint8_t data = EUSART_Read();
+[v _data `uc ~T0 @X0 1 a ]
+[e = _data ( _EUSART_Read ..  ]
+"349
+[; ;main.c: 349:         EUSART_Write(data);
+[e ( _EUSART_Write (1 _data ]
+"350
+[; ;main.c: 350:       }
+}
+[e :U 1650 ]
+"352
+[; ;main.c: 352:     }
 }
 [e :U 1647 ]
 [e $U 1648  ]
 [e :U 1649 ]
-"349
-[; ;main.c: 349: }
+"353
+[; ;main.c: 353: }
 [e :UE 1646 ]
 }

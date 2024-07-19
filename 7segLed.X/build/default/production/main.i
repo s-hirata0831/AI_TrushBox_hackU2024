@@ -14813,6 +14813,10 @@ void main(void)
 # 345 "main.c"
     while (1)
     {
-      displayLotteryResult(7777);
+      if(EUSART_is_rx_ready()){
+        uint8_t data = EUSART_Read();
+        EUSART_Write(data);
+      }
+
     }
 }

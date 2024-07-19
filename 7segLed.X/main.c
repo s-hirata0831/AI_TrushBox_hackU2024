@@ -43,6 +43,10 @@
 
 #include "mcc_generated_files/mcc.h"
 
+#define OFF 10
+#define ATARI 20
+#define HAZURE 30
+
 void displayClear(){
   A_SetHigh();
   B_SetHigh();
@@ -344,7 +348,21 @@ void main(void)
 
     while (1)
     {
-      displayLotteryResult(7777);
+      if(EUSART_is_rx_ready()){
+        uint8_t data = EUSART_Read();
+        if(data == OFF){
+          displayClear();
+        }else if(data == ATARI){
+          displayLotteryResult(7777);
+          EUSART_Write(50);
+        }else if(data == HAZURE){
+          displayLotteryResult(7776);
+          EUSART_Write(50);
+        }else{
+          displayClear();
+        }
+      }
+      //displayLotteryResult(7777);
     }
 }
 
