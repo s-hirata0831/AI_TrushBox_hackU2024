@@ -29,24 +29,18 @@ def writeNum(cNum, pNum):
     can = rows[0][0]
     pet = rows[0][1]
     if int(can) != int(cNum) or int(pet) != int(pNum):
-        judgeCan = int(can) % 2
-        judgePet = int(pet) % 2
-        print(judgeCan)
-        print(judgePet)
-        if judgeCan == 0:
+        if int(can) < int(cNum):
             can = cNum
-            with open('fishSave/checkNum', 'w') as r:
+            with open('fishSave/checkNum.csv', 'w') as r:
                 write = csv.writer(r)
-                write.writerows(can)
+                write.writerow([cNum, pet])
             return True
-        elif judgePet == 0:
+        elif int(pet) < int(pNum):
             pet = pNum
-            with open('fishSave/checkNum', 'w') as p:
+            with open('fishSave/checkNum.csv', 'w') as p:
                 write = csv.writer(p)
-                write.writerows(pet)
+                write.writerow([can, pNum])
             return True
-        else:
-            return 1
     else:
         print("新たにゴミは投入されませんでした。")
         return False
@@ -59,9 +53,9 @@ def random(cNum, pNum):
     petNum = int(pNum) % 2
     if canNum == 0:
         trueTag = int(cNum) / 2
-        with open("fishSave/state.csv", 'r') as rf:
+        with open("fishSave/state.csv", 'r', encoding='utf-8') as rf:
             reader = csv.reader(rf)
-            rows = list(reader)
+            rows = [remove_bom(cell) for cell in next(reader)] + list(reader)
         trustTag = 0
         #譜面の現状
         if int(rows[0][0]) == 1 or int(rows[0][0]) == 2:
@@ -153,7 +147,8 @@ def randomScr(cNum, pNum):
         for r, c in target_positions:
             if int(rows[r][c]) == 1 or int(rows[r][c]) == 2:
                 trustTag += 1
-        
+                
+        genTag = 0
         # 新たに生成すべきコマの数を計算
         if int(trustTag) < int(trueTag):
             genTag = int(trueTag) - int(trustTag)
@@ -194,6 +189,7 @@ def randomScr(cNum, pNum):
             if int(rows[r][c]) == 1 or int(rows[r][c]) == 2:
                 trustTag += 1
         
+        genTag = 0
         # 新たに生成すべきコマの数を計算
         if int(trustTag) < int(trueTag):
             genTag = int(trueTag) - int(trustTag)
@@ -278,5 +274,3 @@ def test():
             writer.writerows(rows)
     else:
         print("1以外")
-
-resetCsv()
