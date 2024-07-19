@@ -4,7 +4,7 @@ from cam import getFrame
 #import torch
 
 # Load a model
-model = YOLO(r'jetson\best.pt')
+model = YOLO(r'jetson/best.pt')
 
 def getResultAI():
   img = getFrame();
