@@ -4,11 +4,11 @@ from cam import getFrame
 #import torch
 
 # Load a model
-model = YOLO(r'runs\detect\train11\weights\best.pt')
+model = YOLO(r'jetson\best.pt')
 
 def getResultAI():
   img = getFrame();
-  
+  cv2.imshow("123", img)
   result =  model.predict(source=img,
                 conf=0.50,
                 project="mypredict", # 出力先
