@@ -4,6 +4,8 @@ from firebase_admin import firestore
 from firebase_admin import credentials
 import threading
 import writeCsv
+import time
+import csv
 
 #------
 #Firebase初期設定
@@ -142,7 +144,7 @@ def main(page: ft.Page):
         if page.route == "/1":
             page.views.append(
                 ft.View(
-                    "/",
+                    "/1",
                     [
                         page.appbar,
                         ft.Container(
@@ -170,6 +172,18 @@ def main(page: ft.Page):
                 )
             )
 
+        if page.route == "/fish":
+            with open
+            page.views.append(
+                ft.View(
+                    "/fish",
+                    [
+                        page.appbar,
+                        ft.Container
+                    ]
+                )
+            )
+
         # ページ更新
         page.update()
 
@@ -188,9 +202,13 @@ def main(page: ft.Page):
         top_view = page.views[0]
         page.go(top_view.route)
 
-    #1個目
+    #ゴミを捨ててくれてありがとう画面
     def open_1():
         page.go("/1")
+
+    #譜面自動生成
+    def open_fish():
+        page.go("/fish")
 
     # Firebaseからデータを取得して更新
     def update_data():
@@ -203,8 +221,14 @@ def main(page: ft.Page):
         pet_text.value = f"{pet_num}本"
         print("データを取得*2")
 
-        if can_num == 1 or pet_num == 1:
+        print("ゴミが投入されたか確認します。")
+        checkResult = writeCsv.writeNum(can_num, pet_num)
+        if checkResult == True:
+            #新たに追加された場合
             open_1()
+            time.sleep(5)
+            #譜面取得
+            writeCsv.randomScr(can_num, pet_num)
 
         # ページを更新
         page.update()
