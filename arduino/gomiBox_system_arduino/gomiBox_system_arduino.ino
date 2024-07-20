@@ -37,7 +37,7 @@ double distance;
 bool coverIsOpened = false;
 bool objectIsPassed = false;
 bool petCoverIsOpened;
-String object;
+uint8_t object;
 
 double getDistance();
 void setLed(bool isCan, int num);
@@ -83,40 +83,46 @@ void loop()
   delay(1000);
   while(true){
     picSerial.println("wait ai");
-    Serial.println("wait ai");
-    if(jetsonSerial.available() == false){ //どちらが検知されたかを取得
-      //object = jetsonSerial.read();
-      object = "can";
-      Serial.println(object);
-      if(object == "pet"){
+    jetsonSerial.println("wait ai");
+    if(Serial.available()){ //どちらが検知されたかを取得
+      object = Serial.read();
+      //object = "can";
+      jetsonSerial.println(object);
+      if(object == 112){ //pet
         openCover(true);
         break;
-      }else if(object == "can"){
+      }else if(object == 99){ //can
         openCover(false);
         break;
       }
     }    
   }
-
+  delay(1000);
   while(true){
     distance = getDistance();
-    Serial.println(distance);
+    jetsonSerial.println(distance);
     if(distance < 35){
       jetsonSerial.print("pass");
-      if(object == "pet"){
+      if(object == 112){ //pet
         closeCover(true);
         fallingLed(false, cnt_pet);
         cnt_pet++;
         while(digitalRead(CAP_SW) == LOW){} //キャップが入るまで待つ
         picSerial.write(SEG_ATARI);
-        Serial.println("seg-atari");
+        jetsonSerial.println("seg-atari");
+        miniColaServo.write(0);
+        delay(1000);
+        miniColaServo.write(90);        
         //while(picSerial.read() != SEG_END){}
       }else{
         closeCover(false);
         fallingLed(true, cnt_can);
         cnt_can++;
         picSerial.write(SEG_ATARI);
-        Serial.println("seg-atari");
+        jetsonSerial.println("seg-atari");
+        miniColaServo.write(0);
+        delay(1000);
+        miniColaServo.write(90);
         //while(picSerial.read() != SEG_END){}
       }
       break;
@@ -239,7 +245,7 @@ void openCover(bool is_pet){
   if(is_pet){
     petServo.write(SERVO_OPEN_ANGLE);
   }else{
-    canServo.write(SERVO_OPEN_ANGLE);
+    canServo.write(0);
   }
 }
 
@@ -247,6 +253,6 @@ void closeCover(bool is_pet){
   if(is_pet){
     petServo.write(SERVO_CLOSE_ANGLE);
   }else{
-    canServo.write(SERVO_CLOSE_ANGLE);
+    canServo.write(180);
   }
 }
