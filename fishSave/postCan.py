@@ -4,7 +4,7 @@ from firebase_admin import credentials
 #------
 #Firebase初期設定
 #------
-cred = credentials.Certificate("fishSave/token.json")
+cred = credentials.Certificate("token.json")
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 docCan = db.collection("stateTrashBox").document("can")
@@ -18,5 +18,5 @@ pet = docPet.get().to_dict()
 can_num = can.get('canNum', 0)
 pet_num = pet.get('petNum', 0)
 
-can_num += 1
+can_num += 2
 docCan.update({"canNum": can_num})
