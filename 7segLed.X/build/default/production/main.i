@@ -14815,21 +14815,13 @@ void main(void)
 
     SYSTEM_Initialize();
 # 349 "main.c"
+    displayClear();
     while (1)
     {
       if(EUSART_is_rx_ready()){
+        displayLotteryResult(7777);
         uint8_t data = EUSART_Read();
-        if(data == 10){
-          displayClear();
-        }else if(data == 20){
-          displayLotteryResult(7777);
-          EUSART_Write(50);
-        }else if(data == 30){
-          displayLotteryResult(7776);
-          EUSART_Write(50);
-        }else{
-          displayClear();
-        }
+# 367 "main.c"
       }
 
     }

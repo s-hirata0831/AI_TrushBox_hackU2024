@@ -51,8 +51,6 @@
 [v _EUSART_is_rx_ready EUSART_is_rx_ready `(a  1 e 1 0 ]
 "113
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]
-"132
-[v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
 "144
 [v _EUSART_DefaultFramingErrorHandler EUSART_DefaultFramingErrorHandler `(v  1 e 1 0 ]
 "146
@@ -247,47 +245,45 @@
 "329 D:\GitHub\AI_TrushBox_hackU2024\7segLed.X\main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"352
-[v main@data data `uc  1 a 1 50 ]
-"367
+"370
 } 0
 "241
 [v _displayLotteryResult displayLotteryResult `(v  1 e 1 0 ]
 {
 "296
-[v displayLotteryResult@j_414 j `i  1 a 2 45 ]
+[v displayLotteryResult@j_413 j `i  1 a 2 45 ]
 "278
-[v displayLotteryResult@j_410 j `i  1 a 2 43 ]
+[v displayLotteryResult@j_409 j `i  1 a 2 43 ]
 "262
-[v displayLotteryResult@j_405 j `i  1 a 2 41 ]
+[v displayLotteryResult@j_404 j `i  1 a 2 41 ]
 "250
 [v displayLotteryResult@j j `i  1 a 2 31 ]
 "295
-[v displayLotteryResult@wait_cnt_413 wait_cnt `i  1 a 2 23 ]
+[v displayLotteryResult@wait_cnt_412 wait_cnt `i  1 a 2 23 ]
 "277
-[v displayLotteryResult@wait_cnt_409 wait_cnt `i  1 a 2 19 ]
+[v displayLotteryResult@wait_cnt_408 wait_cnt `i  1 a 2 19 ]
 "261
-[v displayLotteryResult@wait_cnt_404 wait_cnt `i  1 a 2 15 ]
+[v displayLotteryResult@wait_cnt_403 wait_cnt `i  1 a 2 15 ]
 "249
 [v displayLotteryResult@wait_cnt wait_cnt `i  1 a 2 11 ]
 "314
-[v displayLotteryResult@j_416 j `i  1 a 2 47 ]
+[v displayLotteryResult@j_415 j `i  1 a 2 47 ]
 "294
-[v displayLotteryResult@i_412 i `i  1 a 2 37 ]
+[v displayLotteryResult@i_411 i `i  1 a 2 37 ]
 "276
-[v displayLotteryResult@i_408 i `i  1 a 2 35 ]
+[v displayLotteryResult@i_407 i `i  1 a 2 35 ]
 "260
-[v displayLotteryResult@i_403 i `i  1 a 2 33 ]
+[v displayLotteryResult@i_402 i `i  1 a 2 33 ]
 "248
 [v displayLotteryResult@i i `i  1 a 2 29 ]
 "313
-[v displayLotteryResult@wait_cnt_415 wait_cnt `i  1 a 2 25 ]
+[v displayLotteryResult@wait_cnt_414 wait_cnt `i  1 a 2 25 ]
 "293
-[v displayLotteryResult@x_411 x `i  1 a 2 21 ]
+[v displayLotteryResult@x_410 x `i  1 a 2 21 ]
 "275
-[v displayLotteryResult@x_407 x `i  1 a 2 17 ]
+[v displayLotteryResult@x_406 x `i  1 a 2 17 ]
 "259
-[v displayLotteryResult@x_402 x `i  1 a 2 13 ]
+[v displayLotteryResult@x_401 x `i  1 a 2 13 ]
 "247
 [v displayLotteryResult@x x `i  1 a 2 9 ]
 "242
@@ -452,14 +448,6 @@
 [v _EUSART_is_rx_ready EUSART_is_rx_ready `(a  1 e 1 0 ]
 {
 "102
-} 0
-"132
-[v _EUSART_Write EUSART_Write `(v  1 e 1 0 ]
-{
-[v EUSART_Write@txData txData `uc  1 a 1 wreg ]
-[v EUSART_Write@txData txData `uc  1 a 1 wreg ]
-[v EUSART_Write@txData txData `uc  1 a 1 0 ]
-"139
 } 0
 "113
 [v _EUSART_Read EUSART_Read `(uc  1 e 1 0 ]

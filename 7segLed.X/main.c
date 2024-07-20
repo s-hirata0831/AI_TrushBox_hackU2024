@@ -346,23 +346,26 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
 
+    displayClear();
     while (1)
     {
       if(EUSART_is_rx_ready()){
+        displayLotteryResult(7777);
         uint8_t data = EUSART_Read();
-        if(data == OFF){
-          displayClear();
-        }else if(data == ATARI){
-          displayLotteryResult(7777);
-          EUSART_Write(50);
-        }else if(data == HAZURE){
-          displayLotteryResult(7776);
-          EUSART_Write(50);
-        }else{
-          displayClear();
-        }
+        // EUSART_Write(data);
+        // if(data == OFF){
+        //   //displayClear();
+        // }else if(data == ATARI){
+        //   displayLotteryResult(7777);
+        //   EUSART_Write(50);
+        // }else if(data == HAZURE){
+        //   displayLotteryResult(7776);
+        //   EUSART_Write(50);
+        // }else{
+        //   //displayClear();
+        // }
       }
-      //displayLotteryResult(7777);
+      //displayLotteryResult(7776);
     }
 }
 

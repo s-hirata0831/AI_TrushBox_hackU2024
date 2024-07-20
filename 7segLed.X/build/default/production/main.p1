@@ -45,9 +45,6 @@ Version 4.0 HI-TECH Software Intermediate Code
 "321
 [; ;./mcc_generated_files/eusart.h: 321: uint8_t EUSART_Read(void);
 [v _EUSART_Read `(uc ~T0 @X0 0 ef ]
-"341
-[; ;./mcc_generated_files/eusart.h: 341: void EUSART_Write(uint8_t txData);
-[v _EUSART_Write `(v ~T0 @X0 0 ef1`uc ]
 "54 C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1769.h
 [; ;C:/Program Files/Microchip/MPLABX/v5.50/packs/Microchip/PIC12-16F1xxx_DFP/1.2.63/xc8\pic\include\proc\pic16f1769.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -2767,78 +2764,36 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;main.c: 332:     SYSTEM_Initialize();
 [e ( _SYSTEM_Initialize ..  ]
 "349
-[; ;main.c: 349:     while (1)
-[e :U 1648 ]
+[; ;main.c: 349:     displayClear();
+[e ( _displayClear ..  ]
 "350
-[; ;main.c: 350:     {
-{
+[; ;main.c: 350:     while (1)
+[e :U 1648 ]
 "351
-[; ;main.c: 351:       if(EUSART_is_rx_ready()){
-[e $ ! != -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 1650  ]
+[; ;main.c: 351:     {
 {
 "352
-[; ;main.c: 352:         uint8_t data = EUSART_Read();
+[; ;main.c: 352:       if(EUSART_is_rx_ready()){
+[e $ ! != -> ( _EUSART_is_rx_ready ..  `i -> 0 `i 1650  ]
+{
+"353
+[; ;main.c: 353:         displayLotteryResult(7777);
+[e ( _displayLotteryResult (1 -> 7777 `i ]
+"354
+[; ;main.c: 354:         uint8_t data = EUSART_Read();
 [v _data `uc ~T0 @X0 1 a ]
 [e = _data ( _EUSART_Read ..  ]
-"353
-[; ;main.c: 353:         if(data == 10){
-[e $ ! == -> _data `i -> 10 `i 1651  ]
-{
-"354
-[; ;main.c: 354:           displayClear();
-[e ( _displayClear ..  ]
-"355
-[; ;main.c: 355:         }else if(data == 20){
-}
-[e $U 1652  ]
-[e :U 1651 ]
-[e $ ! == -> _data `i -> 20 `i 1653  ]
-{
-"356
-[; ;main.c: 356:           displayLotteryResult(7777);
-[e ( _displayLotteryResult (1 -> 7777 `i ]
-"357
-[; ;main.c: 357:           EUSART_Write(50);
-[e ( _EUSART_Write (1 -> -> 50 `i `uc ]
-"358
-[; ;main.c: 358:         }else if(data == 30){
-}
-[e $U 1654  ]
-[e :U 1653 ]
-[e $ ! == -> _data `i -> 30 `i 1655  ]
-{
-"359
-[; ;main.c: 359:           displayLotteryResult(7776);
-[e ( _displayLotteryResult (1 -> 7776 `i ]
-"360
-[; ;main.c: 360:           EUSART_Write(50);
-[e ( _EUSART_Write (1 -> -> 50 `i `uc ]
-"361
-[; ;main.c: 361:         }else{
-}
-[e $U 1656  ]
-[e :U 1655 ]
-{
-"362
-[; ;main.c: 362:           displayClear();
-[e ( _displayClear ..  ]
-"363
-[; ;main.c: 363:         }
-}
-[e :U 1656 ]
-[e :U 1654 ]
-[e :U 1652 ]
-"364
-[; ;main.c: 364:       }
+"367
+[; ;main.c: 367:       }
 }
 [e :U 1650 ]
-"366
-[; ;main.c: 366:     }
+"369
+[; ;main.c: 369:     }
 }
 [e :U 1647 ]
 [e $U 1648  ]
 [e :U 1649 ]
-"367
-[; ;main.c: 367: }
+"370
+[; ;main.c: 370: }
 [e :UE 1646 ]
 }
